@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                                     boardView[i][j]!!.setImageResource(R.drawable.black)
                                 }
                                 1 -> {
-                                    boardView[i][j]!!.setImageResource(R.drawable.gray)
+                                    boardView[i][j]!!.setImageResource(R.drawable.white)
                                 }
                             }
                         }
