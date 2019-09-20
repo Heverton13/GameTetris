@@ -16,15 +16,7 @@ class MainActivity : AppCompatActivity() {
     var running = true
     var speed:Long = 350
 
-    var pt = L(1,12)
-
-    // Lista de Peças do meu jogo
-    val ponto = listOf<Peca>(L(1,12),O(1,12),I(1,12),T(1,12),
-                                        L2(1,12),Z(1,12),S(1,12))
-
-    //val board = Array(LINHA, { IntArray(COLUNA) })
-
-    var pecas:Int = Random.nextInt(0, 6)
+    var pt:Peca = getRadomPeca()
 
     var board = Array(LINHA) {
         Array(COLUNA){0}
@@ -45,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         //pecas = Random.nextInt(0, 6)
 
 
-
         val inflater = LayoutInflater.from(this)
 
         for (i in 0 until LINHA) {
@@ -56,15 +47,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonLeft.setOnClickListener {
-            ponto[pecas].moveLeft()
+            pt.moveLeft()
         }
 
         buttonRight.setOnClickListener {
-            ponto[pecas].moveRight()
+            pt.moveRight()
         }
 
         buttonRotate.setOnClickListener {
-            ponto[pecas].rotate()
+            pt.rotate()
         }
 
         buttonSpeed.setOnClickListener {
@@ -83,42 +74,91 @@ class MainActivity : AppCompatActivity() {
                     //limpa tela
                     for (i in 0 until LINHA) {
                         for (j in 0 until COLUNA) {
-                            boardView[i][j]!!.setImageResource(R.drawable.black)
+                            // Verifica a board, onde for 1 deixa branco onde for zero permanece preto
+                            when (board[i][j]) {
+                                0 -> {
+                                    boardView[i][j]!!.setImageResource(R.drawable.black)
+                                }
+                                1 -> {
+                                    boardView[i][j]!!.setImageResource(R.drawable.white)
+                                }
+                            }
                         }
                     }
                     //move peça atual
+                    if(verificarParada()){
+                        pt.moveDown()
+                        pintarBord()
+                    }else{
+                        pintarBord()
+                        board[pt.pontoA.x][pt.pontoA.y] = 1
+                        board[pt.pontoB.x][pt.pontoB.y] = 1
+                        board[pt.pontoC.x][pt.pontoC.y] = 1
+                        board[pt.pontoD.x][pt.pontoD.y] = 1
+                        pt = getRadomPeca()
+                    }
 
-                    verificarParada()
-                    //ponto[pecas].moveDown()
                     //print peça
                     try {
-                        boardView[ponto[pecas].pontoA.x][ponto[pecas].pontoA.y]!!.setImageResource(R.drawable.white)
-                        boardView[ponto[pecas].pontoB.x][ponto[pecas].pontoB.y]!!.setImageResource(R.drawable.white)
-                        boardView[ponto[pecas].pontoC.x][ponto[pecas].pontoC.y]!!.setImageResource(R.drawable.white)
-                        boardView[ponto[pecas].pontoD.x][ponto[pecas].pontoD.y]!!.setImageResource(R.drawable.white)
+                        boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
+                        boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
+                        boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
+                        boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
 
                     }catch (e:ArrayIndexOutOfBoundsException ) {
                         //se a peça passou das bordas eu vou parar o jogo
-
                         running = false
                     }
-
                 }
             }
         }.start()
     }
 
-    fun verificarParada(){
+    // Função que verficar se a peça chegou no "chão"
+    fun verificarParada(): Boolean{
 
-        if(ponto[pecas].pontoB.x <= 34 && ponto[pecas].pontoB.y <= 60 &&
-            ponto[pecas].pontoC.x <= 34 && ponto[pecas].pontoC.y <= 60 &&
-            ponto[pecas].pontoD.x <= 34 && ponto[pecas].pontoD.y <= 60 &&
-            ponto[pecas].pontoA.x <= 34 && ponto[pecas].pontoA.y <= 60
-        )
+        return (pt.pontoA.x + 1  < LINHA && board[pt.pontoA.x + 1][pt.pontoA.y] != 1) &&
+                (pt.pontoB.x + 1 < LINHA && board[pt.pontoB.x + 1][pt.pontoB.y] != 1) &&
+                (pt.pontoC.x + 1 < LINHA && board[pt.pontoC.x + 1][pt.pontoC.y] != 1) &&
+                (pt.pontoD.x + 1 < LINHA && board[pt.pontoD.x + 1][pt.pontoD.y] != 1)
+    }
 
-        {
-            ponto[pecas].moveDown()
+    // Função para gerar peças aleatórias
+    fun getRadomPeca():Peca {
+
+        var x = Random.nextInt(0, 6)
+
+        return when(x) {
+            0 -> {
+                return L(1, 12)
+            }
+            1 -> {
+                return T(1, 12)
+            }
+            2 -> {
+                return I(1, 12)
+            }
+            3 -> {
+                return L2(1, 12)
+            }
+            4 -> {
+                return O(1, 12)
+            }
+            5 -> {
+                return Z(1, 12)
+            }
+            6  -> return S(1, 12)
+
+            else -> L(1, 12)
         }
+    }
+
+    //Essa função pinta as partes onde parou uma peça para ficar salva na próxima execução
+    fun pintarBord(){
+        boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
+        boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
+        boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
+        boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
     }
 
 }
