@@ -91,13 +91,13 @@ class MainActivity : AppCompatActivity() {
                         pintarBord()
                     }else{
                         pintarBord()
+                        // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
                         board[pt.pontoA.x][pt.pontoA.y] = 1
                         board[pt.pontoB.x][pt.pontoB.y] = 1
                         board[pt.pontoC.x][pt.pontoC.y] = 1
                         board[pt.pontoD.x][pt.pontoD.y] = 1
                         pt = getRadomPeca()
                     }
-
                     //print peça
                     try {
                         boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
                     }catch (e:ArrayIndexOutOfBoundsException ) {
                         //se a peça passou das bordas eu vou parar o jogo
-                        running = false
+                        //running = false
                     }
                 }
             }
@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Essa função pinta as partes onde parou uma peça para ficar salva na próxima execução
+    //Essa função é usadada para pintar as partes onde parou uma peça para que possam ser vistas na próxima execução
     fun pintarBord(){
         boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
         boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
