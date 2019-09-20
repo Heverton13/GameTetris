@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonRight.setOnClickListener {
+            if(verificarParadaDireita())
             pt.moveRight()
         }
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonSpeed.setOnClickListener {
-            speed += 100
+            speed -= 100
         }
 
         gameRun()
@@ -98,17 +99,6 @@ class MainActivity : AppCompatActivity() {
                         board[pt.pontoD.x][pt.pontoD.y] = 1
                         pt = getRadomPeca()
                     }
-                    //print peça
-                    try {
-                        boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
-                        boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
-                        boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
-                        boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
-
-                    }catch (e:ArrayIndexOutOfBoundsException ) {
-                        //se a peça passou das bordas eu vou parar o jogo
-                        //running = false
-                    }
                 }
             }
         }.start()
@@ -121,6 +111,15 @@ class MainActivity : AppCompatActivity() {
                 (pt.pontoB.x + 1 < LINHA && board[pt.pontoB.x + 1][pt.pontoB.y] != 1) &&
                 (pt.pontoC.x + 1 < LINHA && board[pt.pontoC.x + 1][pt.pontoC.y] != 1) &&
                 (pt.pontoD.x + 1 < LINHA && board[pt.pontoD.x + 1][pt.pontoD.y] != 1)
+    }
+
+    //função que verfica se a peça passou da parede lado direito
+
+    fun verificarParadaDireita(): Boolean{
+        return ((pt.pontoA.y + 1 < COLUNA && board[pt.pontoA.x][pt.pontoA.y + 1] != 1) &&
+                (pt.pontoB.y + 1 < COLUNA && board[pt.pontoB.x][pt.pontoB.y + 1] != 1) &&
+                (pt.pontoC.y + 1 < COLUNA && board[pt.pontoC.x][pt.pontoC.y + 1] != 1) &&
+                (pt.pontoD.y + 1 < COLUNA && board[pt.pontoD.x][pt.pontoD.y + 1] != 1))
     }
 
     // Função para gerar peças aleatórias
@@ -160,5 +159,4 @@ class MainActivity : AppCompatActivity() {
         boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
         boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
     }
-
 }
