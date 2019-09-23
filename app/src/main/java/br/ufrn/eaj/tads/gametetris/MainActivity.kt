@@ -47,11 +47,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonLeft.setOnClickListener {
+            if(verificarParadaDireita())
             pt.moveLeft()
         }
 
         buttonRight.setOnClickListener {
-            if(verificarParadaDireita())
+            if(verificarParadaEsquerda())
             pt.moveRight()
         }
 
@@ -122,6 +123,16 @@ class MainActivity : AppCompatActivity() {
                 (pt.pontoD.y + 1 < COLUNA && board[pt.pontoD.x][pt.pontoD.y + 1] != 1))
     }
 
+
+    //função que verfica se a peça passou da parede lado esquerdo
+    fun verificarParadaEsquerda(): Boolean{
+
+        return ((pt.pontoA.y - 1 >=  0  && board[pt.pontoA.x][pt.pontoA.y - 1] < 1) &&
+                (pt.pontoB.y - 1 >=  0  && board[pt.pontoB.x][pt.pontoB.y - 1] < 1) &&
+                (pt.pontoC.y - 1 >=  0  && board[pt.pontoC.x][pt.pontoC.y - 1] < 1) &&
+                (pt.pontoD.y - 1 >=  0  && board[pt.pontoD.x][pt.pontoD.y - 1] < 1))
+    }
+
     // Função para gerar peças aleatórias
     fun getRadomPeca():Peca {
 
@@ -154,9 +165,11 @@ class MainActivity : AppCompatActivity() {
 
     //Essa função é usadada para pintar as partes onde parou uma peça para que possam ser vistas na próxima execução
     fun pintarBord(){
+
         boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
         boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
         boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
         boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
+
     }
 }
