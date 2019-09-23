@@ -2,6 +2,7 @@ package br.ufrn.eaj.tads.gametetris
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     val LINHA = 36
-    val COLUNA = 25
+    val COLUNA = 26
     var running = true
     var speed:Long = 350
 
@@ -100,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                         board[pt.pontoD.x][pt.pontoD.y] = 1
                         pt = getRadomPeca()
                     }
+                    verificarLinha()
                 }
             }
         }.start()
@@ -172,4 +174,31 @@ class MainActivity : AppCompatActivity() {
         boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
 
     }
+
+    fun destroi(linha:Int){
+        board[linha] = Array(COLUNA){0}
+        for ( i in linha downTo 1){
+            Log.i("Entrou","Nessa parte ele deveria descer")
+            board[i] = board[i - 1]
+        }
+    }
+
+    fun verificarLinha(){
+
+        //var linhaAtual = 0
+        for (i in 0 until LINHA) {
+            var contador = 0
+            for (x in 0 until COLUNA) {
+                if (board[i][x] == 1) {
+                    Log.i("Entrou","Nessa parte ele ver se tem 1 o cont ta em $contador")
+                    contador += 1
+                    if (contador == 26) {
+                        Log.i("Entrou","Nessa parte o contador da $contador e devia destruir")
+                        destroi(i)
+                    }
+                }
+            }
+        }
+    }
+
 }
