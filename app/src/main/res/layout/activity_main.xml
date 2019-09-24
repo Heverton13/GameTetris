@@ -19,7 +19,7 @@
             android:id="@+id/textPonto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pontuação:"
+            android:text="@string/pontuacaomain"
             android:textSize="20dp" />
     </LinearLayout>
 

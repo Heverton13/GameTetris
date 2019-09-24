@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GameTetris</string>
+    <string name="novo_jogo1">New Game</string>
+    <string name="novo_jogo2">New Game</string>
+    <string name="d">R</string>
+    <string name="e">L</string>
+    <string name="g">SP</string>
+    <string name="v">S</string>
+    <string name="sair">Exit</string>
+    <string name="continuar">Continue</string>
+    <string name="novo_recorde">New Record</string>
+    <string name="recorde">Record: 0000</string>
+    <string name="configurar">" To set up "</string>
+    <string name="pontuacao">Score: 000</string>
+    <string name="pontuacaomain">"Score: "</string>
+</resources>
