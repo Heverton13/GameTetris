@@ -8,4 +8,8 @@
     <string name="novo_recorde">Novo Recorde</string>
     <string name="novo_jogo2">Novo Jogo</string>
     <string name="sair">Sair</string>
+    <string name="e">E</string>
+    <string name="d">D</string>
+    <string name="v">V</string>
+    <string name="g">G</string>
 </resources>

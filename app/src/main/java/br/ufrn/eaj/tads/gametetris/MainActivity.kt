@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
     val LINHA = 36
     val COLUNA = 26
     var running = true
-    var speed:Long = 350
+    var speed:Long = 400
+    var pontuacao = 0
 
     var pt:Peca = getRadomPeca()
 
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonRotate.setOnClickListener {
+            if(verificarParadaDireita() && verificarParadaEsquerda())
             pt.rotate()
         }
 
@@ -93,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                         pt.moveDown()
                         pintarBord()
                     }else{
+                        speed = 350
                         pintarBord()
                         // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
                         board[pt.pontoA.x][pt.pontoA.y] = 1
@@ -195,6 +198,8 @@ class MainActivity : AppCompatActivity() {
                     if (contador == 26) {
                         Log.i("Entrou","Nessa parte o contador da $contador e devia destruir")
                         destroi(i)
+                        pontuacao += 50
+                        textPonto.text = "Pontuação: $pontuacao"
                     }
                 }
             }

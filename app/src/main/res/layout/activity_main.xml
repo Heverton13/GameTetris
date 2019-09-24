@@ -10,13 +10,13 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="392dp"
-        android:layout_height="58dp"
+        android:layout_width="346dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="8pt"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textPonto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pontuação:"
@@ -30,37 +30,37 @@
 
     </GridLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="423dp"
-        android:layout_height="171dp"
+        android:layout_height="84dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/buttonRight"
             android:layout_width="78dp"
             android:layout_height="47dp"
-            android:layout_marginStart="36dp"
-            android:text="L"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.129" />
+            android:text="@string/e"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/buttonLeft"
             android:layout_width="78dp"
             android:layout_height="47dp"
-            android:layout_marginStart="15dp"
+
             android:layout_marginBottom="108dp"
-            android:text="R"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.351"
-            app:layout_constraintStart_toEndOf="@+id/buttonRight" />
+            android:text="@string/d"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonSpeed"
+            android:layout_width="78dp"
+            android:layout_height="47dp"
+
+            android:text="@string/v"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/buttonRotate"
@@ -68,25 +68,8 @@
             android:layout_height="47dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="28dp"
-            android:text="G"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.777"
-            app:layout_constraintStart_toEndOf="@+id/buttonSpeed" />
-
-        <Button
-            android:id="@+id/buttonSpeed"
-            android:layout_width="78dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="200dp"
-            android:text="S"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.875"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/g"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>
