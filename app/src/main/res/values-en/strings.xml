@@ -11,7 +11,12 @@
     <string name="continuar">Continue</string>
     <string name="novo_recorde">New Record</string>
     <string name="recorde">Record: 0000</string>
-    <string name="configurar">" To set up "</string>
+    <string name="configurar">"Configuration "</string>
     <string name="pontuacao">Score: 000</string>
     <string name="pontuacaomain">"Score: "</string>
+    <string name="dif_cil">Hard</string>
+    <string name="f_cil">Easy</string>
+    <string name="escolha_a_dificuldade_do_jogo">Choose game difficulty:</string>
+    <string name="m_dio">Medium</string>
+    <string name="confirmar">Confirm</string>
 </resources>

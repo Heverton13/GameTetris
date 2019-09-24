@@ -1,5 +1,6 @@
 package br.ufrn.eaj.tads.gametetris
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     val LINHA = 36
     val COLUNA = 26
     var running = true
-    var speed:Long = 400
+    var speed:Long = 500
     var pontuacao = 0
 
     var pt:Peca = getRadomPeca()
@@ -28,15 +29,15 @@ class MainActivity : AppCompatActivity() {
         arrayOfNulls<ImageView>(COLUNA)
     }
 
+    val PREFS = "prefs_file"
+    var valorpadrao:Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         gridboard.rowCount = LINHA
         gridboard.columnCount = COLUNA
-
-        // Gerar as paças aleatórias // #Verificar se funcionar quando gerar conflitos
-        //pecas = Random.nextInt(0, 6)
 
 
         val inflater = LayoutInflater.from(this)
@@ -46,6 +47,16 @@ class MainActivity : AppCompatActivity() {
                 boardView[i][j] = inflater.inflate(R.layout.inflate_image_view, gridboard, false) as ImageView
                 gridboard.addView( boardView[i][j])
             }
+        }
+
+        //Retornando a velocidade da configuração
+
+        val settings = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val texto = settings.getString("texto", "")
+
+        if (texto != null) {
+            valorpadrao = texto.toLong()
+            speed = texto.toLong()
         }
 
         buttonLeft.setOnClickListener {
@@ -95,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                         pt.moveDown()
                         pintarBord()
                     }else{
-                        speed = 350
+                        speed = valorpadrao
                         pintarBord()
                         // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
                         board[pt.pontoA.x][pt.pontoA.y] = 1

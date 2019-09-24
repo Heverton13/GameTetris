@@ -2,7 +2,7 @@
     <string name="app_name">GameTetris</string>
     <string name="novo_jogo1">Novo Jogo</string>
     <string name="continuar">Continuar</string>
-    <string name="configurar">Configurar</string>
+    <string name="configurar">Configuração</string>
     <string name="pontuacao">Pontuação: 0000</string>
     <string name="recorde">Recorde: 0000</string>
     <string name="novo_recorde">Novo Recorde</string>
@@ -13,4 +13,9 @@
     <string name="v">V</string>
     <string name="g">G</string>
     <string name="pontuacaomain">Pontuação:</string>
+    <string name="escolha_a_dificuldade_do_jogo">Escolha a dificuldade do jogo:</string>
+    <string name="f_cil">Fácil</string>
+    <string name="m_dio">Médio</string>
+    <string name="dif_cil">Difícil</string>
+    <string name="confirmar">CONFIRMAR</string>
 </resources>
