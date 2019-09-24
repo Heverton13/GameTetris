@@ -2,6 +2,9 @@ package classes
 
 class L(x:Int, y:Int) : Peca(x,y) {
 
+
+    var check = true
+
     init {
         pontoB = Ponto(x-1,y)
         pontoC = Ponto(x-2,y)
@@ -30,14 +33,32 @@ class L(x:Int, y:Int) : Peca(x,y) {
     }
 
     override fun rotate() {
-        pontoB.x += 1
-        pontoB.y += 1
 
-        pontoC.x += 2
-        pontoC.y += 2
+        if(check == true) {
 
-        pontoD.x += 1
-        pontoD.y -= 1
+            pontoB.x += 1
+            pontoB.y += 1
+
+            pontoC.x += 2
+            pontoC.y += 2
+
+            pontoD.x += 1
+            pontoD.y -= 1
+
+            check = false
+
+        }else{
+            pontoB.x -= 1
+            pontoB.y -= 1
+
+            pontoC.x -= 2
+            pontoC.y -= 2
+
+            pontoD.x -= 1
+            pontoD.y += 1
+
+            check = true
+        }
     }
 
 }

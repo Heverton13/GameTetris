@@ -29,19 +29,19 @@
             android:id="@+id/novoJogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Novo Jogo" />
+            android:text="@string/novo_jogo2" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Continuar" />
+            android:text="@string/continuar" />
 
         <Button
             android:id="@+id/btnConfig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Configurar" />
+            android:text="@string/configurar" />
 
         <ImageView
             android:id="@+id/imgpecas"

@@ -2,6 +2,8 @@ package classes
 
 class Z(x:Int, y:Int) : Peca(x,y) {
 
+    var check = true
+
     init {
         pontoB = Ponto(x,y+1)
         pontoC = Ponto(x-1,y)
@@ -30,14 +32,34 @@ class Z(x:Int, y:Int) : Peca(x,y) {
     }
 
     override fun rotate() {
-        pontoB.x += 1
-        pontoB.y -= 1
 
-        pontoC.x += 1
-        pontoC.y -= 1
+        if(check == true) {
 
-        pontoD.x -= 0
-        pontoD.y += 0
+            pontoB.x += 1
+            pontoB.y -= 1
+
+            pontoC.x += 1
+            pontoC.y -= 1
+
+            pontoD.x -= 0
+            pontoD.y += 0
+
+            check = false
+
+        }else{
+
+            pontoB.x -= 1
+            pontoB.y += 1
+
+            pontoC.x -= 1
+            pontoC.y += 1
+
+            pontoD.x += 0
+            pontoD.y -= 0
+
+            check = true
+
+        }
     }
 
 }

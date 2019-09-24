@@ -2,6 +2,8 @@ package classes
 
 class O(x:Int, y:Int) : Peca(x,y) {
 
+
+
     init {
         pontoB = Ponto(x,y+1)
         pontoC = Ponto(x+1,y)
@@ -30,6 +32,7 @@ class O(x:Int, y:Int) : Peca(x,y) {
     }
 
     override fun rotate() {
+
         pontoB.x += 0
         pontoB.y += 0
 
