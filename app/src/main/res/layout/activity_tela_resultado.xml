@@ -43,6 +43,7 @@
             android:text="@string/novo_recorde"
             android:textAlignment="center"
             android:textColor="#EE8F09"
+            android:visibility="invisible"
             android:textSize="25dp" />
 
         <ImageView

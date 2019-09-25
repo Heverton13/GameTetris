@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_tela_resultado.*
@@ -23,6 +24,26 @@ class TelaResultado : AppCompatActivity() {
         var texto = params?.getInt("pontos")
 
         textpontos.text = "Pontuação: $texto"
+
+
+        val settings = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        var editor = settings.edit()
+        editor.putString("score", texto.toString())
+        editor.commit()
+
+
+        var record = settings.getString("score",texto.toString())
+
+        if(texto.toString().toInt() > record.toString().toInt()){
+
+            Log.i("s","Esse aqui é pra valer")
+            newrecord.visibility= View.VISIBLE
+            editor.putInt("score", texto.toString().toInt())
+            editor.commit()
+
+        }
+
+        textrecord.text = "Record: $record"
 
         btnNewGame.setOnClickListener {
             var x = Intent(this, MainActivity::class.java)
