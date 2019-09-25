@@ -52,9 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Retornando a velocidade da configuração
-
         val settings = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        val texto = settings.getString("texto", "")
+        var texto = settings.getString("texto", "500")
 
         if (texto != null) {
             valorpadrao = texto.toLong()
@@ -82,12 +81,9 @@ class MainActivity : AppCompatActivity() {
 
         btnPause.setOnClickListener {
             if (pausa == true) {
-
                 running = false
                 pausa = false
-
             } else {
-
                 running = true
                 pausa = true
                 gameRun()
