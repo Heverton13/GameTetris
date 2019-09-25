@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     val PREFS = "prefs_file"
     var valorpadrao:Long = 0
+    var pausa = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +78,20 @@ class MainActivity : AppCompatActivity() {
 
         btnNewGame.setOnClickListener {
             speed -= 100
+        }
+
+        btnPause.setOnClickListener {
+            if (pausa == true) {
+
+                running = false
+                pausa = false
+
+            } else {
+
+                running = true
+                pausa = true
+                gameRun()
+            }
         }
 
         gameRun()
@@ -238,6 +253,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+
+
     }
 
 }
