@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textpontos"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:text="@string/pontuacao"
@@ -28,7 +28,7 @@
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textrecord"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:text="@string/recorde"
@@ -37,7 +37,7 @@
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/newrecord"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:text="@string/novo_recorde"
@@ -54,14 +54,14 @@
             app:srcCompat="@android:drawable/btn_default" />
 
         <Button
-            android:id="@+id/buttonSpeed"
+            android:id="@+id/btnNewGame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/novo_jogo2" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnSair"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sair" />

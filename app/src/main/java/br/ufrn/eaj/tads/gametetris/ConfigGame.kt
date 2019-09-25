@@ -29,15 +29,15 @@ class ConfigGame : AppCompatActivity() {
 
         if(radioFacil.isChecked){
             editor.putBoolean("salvar", radioFacil.isChecked)
-            editor.putString("texto", "400")
+            editor.putString("texto", "500")
             editor.commit()
         }else if (radioMedio.isChecked){
             editor.putBoolean("salvar", radioMedio.isChecked)
-            editor.putString("texto", "280")
+            editor.putString("texto", "250")
             editor.commit()
         }else if (radioDificil.isChecked){
             editor.putBoolean("salvar", radioDificil.isChecked)
-            editor.putString("texto", "150")
+            editor.putString("texto", "100")
             editor.commit()
         }else{
             editor.remove("salvar")

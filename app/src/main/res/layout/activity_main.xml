@@ -10,8 +10,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="346dp"
-        android:layout_height="59dp"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8pt"
         android:orientation="vertical">
 
@@ -31,17 +31,18 @@
     </GridLayout>
 
     <LinearLayout
-        android:layout_width="423dp"
-        android:layout_height="84dp"
+        android:layout_width="326dp"
+        android:layout_height="52dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="15dp"
-        android:gravity="center_horizontal">
+        android:layout_marginRight="15dp">
 
         <Button
             android:id="@+id/buttonRight"
             android:layout_width="78dp"
             android:layout_height="47dp"
+            android:layout_marginRight="40dp"
             android:text="@string/e"
             android:textSize="18sp" />
 
@@ -50,26 +51,37 @@
             android:layout_width="78dp"
             android:layout_height="47dp"
 
+            android:layout_marginRight="40dp"
             android:layout_marginBottom="108dp"
             android:text="@string/d"
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/buttonSpeed"
-            android:layout_width="78dp"
-            android:layout_height="47dp"
-
-            android:text="@string/v"
-            android:textSize="18sp" />
-
-        <Button
             android:id="@+id/buttonRotate"
-            android:layout_width="78dp"
+            android:layout_width="wrap_content"
             android:layout_height="47dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="28dp"
             android:text="@string/g"
             android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnNewGame"
+            android:layout_width="78dp"
+            android:layout_height="47dp"
+
+            android:layout_marginLeft="60dp"
+            android:text="@string/v"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
 </LinearLayout>

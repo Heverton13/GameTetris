@@ -1,6 +1,7 @@
 package br.ufrn.eaj.tads.gametetris
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             pt.rotate()
         }
 
-        buttonSpeed.setOnClickListener {
+        btnNewGame.setOnClickListener {
             speed -= 100
         }
 
@@ -102,10 +103,11 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
+
                     if(verificarParada()){
                         pt.moveDown()
                         pintarBord()
-                    }else{
+                    }else {
                         speed = valorpadrao
                         pintarBord()
                         // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
@@ -113,9 +115,13 @@ class MainActivity : AppCompatActivity() {
                         board[pt.pontoB.x][pt.pontoB.y] = 1
                         board[pt.pontoC.x][pt.pontoC.y] = 1
                         board[pt.pontoD.x][pt.pontoD.y] = 1
+
+                        if(running) {gameOver()}
                         pt = getRadomPeca()
+
                     }
                     verificarLinha()
+
                 }
             }
         }.start()
@@ -149,8 +155,25 @@ class MainActivity : AppCompatActivity() {
                 (pt.pontoD.y - 1 >=  0  && board[pt.pontoD.x][pt.pontoD.y - 1] < 1))
     }
 
+    fun gameOver(){
+
+        for (i in 0 until COLUNA) {
+            if (board[4][i] == 1) {
+                running = false
+                var x = Intent(this, TelaResultado::class.java)
+                var b = Bundle()
+                b.putInt("pontos", pontuacao)
+                x.putExtras(b)
+                startActivity(x)
+                finish()
+                break
+            }
+        }
+    }
+
     // Função para gerar peças aleatórias
     fun getRadomPeca():Peca {
+
 
         var x = Random.nextInt(0, 6)
 
@@ -210,7 +233,7 @@ class MainActivity : AppCompatActivity() {
                         Log.i("Entrou","Nessa parte o contador da $contador e devia destruir")
                         destroi(i)
                         pontuacao += 50
-                        textPonto.text = "Pontuação: $pontuacao"
+                        textPonto.text = "Score: $pontuacao"
                     }
                 }
             }
