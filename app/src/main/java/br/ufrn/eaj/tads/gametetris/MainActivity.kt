@@ -161,16 +161,16 @@ class MainActivity : AppCompatActivity() {
             pt.moveDown()
             pintarBord()
         }else {
+            pintarBord()
             speed = valorpadrao
             // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
             vm.board[pt.pontoA.x][pt.pontoA.y] = 1
             vm.board[pt.pontoB.x][pt.pontoB.y] = 1
             vm.board[pt.pontoC.x][pt.pontoC.y] = 1
             vm.board[pt.pontoD.x][pt.pontoD.y] = 1
-            pintarBord()
+            pt = getRadomPeca()
 
             if(running) {gameOver()}
-            pt = getRadomPeca()
 
         }
 
