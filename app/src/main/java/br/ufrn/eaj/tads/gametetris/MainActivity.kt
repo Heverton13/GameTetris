@@ -114,25 +114,8 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
-
-                    if(verificarParada()){
-                        pt.moveDown()
-                        pintarBord()
-                    }else {
-                        speed = valorpadrao
-                        pintarBord()
-                        // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
-                        board[pt.pontoA.x][pt.pontoA.y] = 1
-                        board[pt.pontoB.x][pt.pontoB.y] = 1
-                        board[pt.pontoC.x][pt.pontoC.y] = 1
-                        board[pt.pontoD.x][pt.pontoD.y] = 1
-
-                        if(running) {gameOver()}
-                        pt = getRadomPeca()
-
-                    }
+                    moverParaBaixo()
                     verificarLinha()
-
                 }
             }
         }.start()
@@ -164,6 +147,27 @@ class MainActivity : AppCompatActivity() {
                 (pt.pontoB.y - 1 >=  0  && board[pt.pontoB.x][pt.pontoB.y - 1] < 1) &&
                 (pt.pontoC.y - 1 >=  0  && board[pt.pontoC.x][pt.pontoC.y - 1] < 1) &&
                 (pt.pontoD.y - 1 >=  0  && board[pt.pontoD.x][pt.pontoD.y - 1] < 1))
+    }
+
+    fun moverParaBaixo(){
+
+        if(verificarParada()){
+            pt.moveDown()
+            pintarBord()
+        }else {
+            speed = valorpadrao
+            // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
+            board[pt.pontoA.x][pt.pontoA.y] = 1
+            board[pt.pontoB.x][pt.pontoB.y] = 1
+            board[pt.pontoC.x][pt.pontoC.y] = 1
+            board[pt.pontoD.x][pt.pontoD.y] = 1
+            pintarBord()
+
+            if(running) {gameOver()}
+            pt = getRadomPeca()
+
+        }
+
     }
 
     fun gameOver(){
@@ -253,8 +257,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
-
 
     }
 

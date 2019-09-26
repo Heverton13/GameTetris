@@ -25,25 +25,24 @@ class TelaResultado : AppCompatActivity() {
 
         textpontos.text = "Pontuação: $texto"
 
+        val setting = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        var edit = setting.edit()
 
-        val settings = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        var editor = settings.edit()
-        editor.putString("score", texto.toString())
-        editor.commit()
-
-
-        var record = settings.getString("score",texto.toString())
-
-        if(texto.toString().toInt() > record.toString().toInt()){
-
-            Log.i("s","Esse aqui é pra valer")
-            newrecord.visibility= View.VISIBLE
-            editor.putInt("score", texto.toString().toInt())
-            editor.commit()
-
-        }
+        var record = setting.getInt("recorde", 0)
 
         textrecord.text = "Record: $record"
+
+        var pontuacaoAtual : Int = Integer.parseInt(texto.toString())
+
+
+        if(pontuacaoAtual > record){
+
+            newrecord.visibility = View.VISIBLE
+
+            edit.putInt("recorde", pontuacaoAtual)
+        }
+
+        edit.commit()
 
         btnNewGame.setOnClickListener {
             var x = Intent(this, MainActivity::class.java)
