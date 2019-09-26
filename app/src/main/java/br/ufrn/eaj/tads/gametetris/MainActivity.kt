@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnNewGame.setOnClickListener {
-            speed -= 100
+            pt.moveDown()
         }
 
         btnPause.setOnClickListener {
