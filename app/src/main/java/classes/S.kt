@@ -1,8 +1,13 @@
 package classes
 
+import br.ufrn.eaj.tads.gametetris.R
+
 class S(x:Int, y:Int) : Peca(x,y)  {
 
     var check = true
+
+    var color : Int = R.drawable.vermelho
+
 
     init {
         pontoB = Ponto(x,y+1)
@@ -57,6 +62,14 @@ class S(x:Int, y:Int) : Peca(x,y)  {
             check = true
         }
 
+    }
+
+    override fun getColorPiece(): Int {
+        return color
+    }
+
+    override fun setColorPiece(colorRecebida: Int) {
+        color = colorRecebida
     }
 
 }

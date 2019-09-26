@@ -216,10 +216,10 @@ class MainActivity : AppCompatActivity() {
     //Essa função é usadada para pintar as partes onde parou uma peça para que possam ser vistas na próxima execução
     fun pintarBord(){
 
-        boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(R.drawable.white)
-        boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(R.drawable.white)
-        boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(R.drawable.white)
-        boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(R.drawable.white)
+        boardView[pt.pontoA.x][pt.pontoA.y]!!.setImageResource(pt.getColorPiece())
+        boardView[pt.pontoB.x][pt.pontoB.y]!!.setImageResource(pt.getColorPiece())
+        boardView[pt.pontoC.x][pt.pontoC.y]!!.setImageResource(pt.getColorPiece())
+        boardView[pt.pontoD.x][pt.pontoD.y]!!.setImageResource(pt.getColorPiece())
 
     }
 

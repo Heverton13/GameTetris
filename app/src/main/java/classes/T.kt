@@ -1,9 +1,14 @@
 package classes
 
+import br.ufrn.eaj.tads.gametetris.R
+
 class T(x:Int, y:Int) : Peca(x,y)  {
 
 
     var check = true
+
+    var color : Int = R.drawable.mageta
+
 
     init {
         pontoB = Ponto(x-1,y)
@@ -60,6 +65,14 @@ class T(x:Int, y:Int) : Peca(x,y)  {
 
             check = true
         }
+    }
+
+    override fun getColorPiece(): Int {
+        return color
+    }
+
+    override fun setColorPiece(colorRecebida: Int) {
+        color = colorRecebida
     }
 
 }
