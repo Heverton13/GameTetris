@@ -16,7 +16,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     val LINHA = 36
-    val COLUNA = 26
+    val COLUNA = 22
     var running = true
     var speed:Long = 500
     var pontuacao = 0
