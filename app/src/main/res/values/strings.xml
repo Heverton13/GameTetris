@@ -3,8 +3,8 @@
     <string name="novo_jogo1">Novo Jogo</string>
     <string name="continuar">Continuar</string>
     <string name="configurar">Configuração</string>
-    <string name="pontuacao">Pontuação: 0000</string>
-    <string name="recorde">Recorde: 0000</string>
+    <string name="pontuacao">Pontuação: </string>
+    <string name="recorde">Recorde: </string>
     <string name="novo_recorde">Novo Recorde</string>
     <string name="novo_jogo2">Novo Jogo</string>
     <string name="sair">Sair</string>

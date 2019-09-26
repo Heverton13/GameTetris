@@ -10,31 +10,84 @@
         android:id="@+id/linearLayout"
         android:layout_width="390dp"
         android:layout_height="598dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textpontos"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:text="@string/pontuacao"
-            android:textAlignment="center"
-            android:textColor="#EE8F09"
-            android:textColorHighlight="#FCF5BD14"
-            android:textSize="25dp" />
+            android:layout_height="81dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textrecord"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:text="@string/recorde"
-            android:textAlignment="center"
-            android:textColor="#EE8F09"
-            android:textSize="25dp" />
+            <TextView
+                android:id="@+id/textpontosi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pontuacao"
+                android:textAlignment="center"
+                android:textColor="#EE8F09"
+                android:textColorHighlight="#FCF5BD14"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="43dp"
+                tools:layout_conversion_absoluteWidth="175dp" />
+
+            <TextView
+                android:id="@+id/textpontos"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#EE8F09"
+                android:textColorHighlight="#FCF5BD14"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.572"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="43dp"
+                tools:layout_conversion_absoluteWidth="175dp" />
+
+            <TextView
+                android:id="@+id/textrecordi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/recorde"
+                android:textAlignment="center"
+                android:textColor="#EE8F09"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.144"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textpontosi"
+                tools:layout_conversion_absoluteHeight="43dp"
+                tools:layout_conversion_absoluteWidth="175dp" />
+
+            <TextView
+                android:id="@+id/textrecord"
+                android:layout_width="29dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="8dp"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#EE8F09"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.573"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textpontosi"
+                tools:layout_conversion_absoluteHeight="43dp"
+                tools:layout_conversion_absoluteWidth="175dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/newrecord"
@@ -43,8 +96,8 @@
             android:text="@string/novo_recorde"
             android:textAlignment="center"
             android:textColor="#EE8F09"
-            android:visibility="invisible"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/logoFim"
@@ -66,18 +119,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sair" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="212dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="casual"
         android:text="Game Over"
         android:textColor="#F70157"
         android:textSize="38dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

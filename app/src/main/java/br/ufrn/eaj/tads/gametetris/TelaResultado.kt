@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_tela_resultado.*
 
 class TelaResultado : AppCompatActivity() {
@@ -23,14 +21,14 @@ class TelaResultado : AppCompatActivity() {
         var params = intent.extras
         var texto = params?.getInt("pontos")
 
-        textpontos.text = "Pontuação: $texto"
+        textpontos.text = "$texto"
 
         val setting = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         var edit = setting.edit()
 
         var record = setting.getInt("recorde", 0)
 
-        textrecord.text = "Record: $record"
+        textrecord.text = "$record"
 
         var pontuacaoAtual : Int = Integer.parseInt(texto.toString())
 

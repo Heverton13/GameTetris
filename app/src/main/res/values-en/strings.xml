@@ -10,9 +10,9 @@
     <string name="sair">Exit</string>
     <string name="continuar">Continue</string>
     <string name="novo_recorde">New Record</string>
-    <string name="recorde">Record: 0000</string>
+    <string name="recorde">Record:</string>
     <string name="configurar">"Configuration "</string>
-    <string name="pontuacao">Score: 000</string>
+    <string name="pontuacao">"Score: "</string>
     <string name="pontuacaomain">"Score: "</string>
     <string name="dif_cil">Hard</string>
     <string name="f_cil">Easy</string>
