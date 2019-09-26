@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import android.view.LayoutInflater
+import androidx.lifecycle.ViewModelProviders
 import classes.*
 import kotlin.random.Random
 
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
     val PREFS = "prefs_file"
     var valorpadrao:Long = 0
     var pausa = true
+
+    val vm: BoardViewModel by lazy {
+
+        ViewModelProviders.of(this)[BoardViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                     for (i in 0 until LINHA) {
                         for (j in 0 until COLUNA) {
                             // Verifica a board, onde for 1 deixa branco onde for zero permanece preto
-                            when (board[i][j]) {
+                            when (vm.board[i][j]) {
                                 0 -> {
                                     boardView[i][j]!!.setImageResource(R.drawable.black)
                                 }
@@ -124,29 +130,29 @@ class MainActivity : AppCompatActivity() {
     // Função que verficar se a peça chegou no "chão"
     fun verificarParada(): Boolean{
 
-        return (pt.pontoA.x + 1  < LINHA && board[pt.pontoA.x + 1][pt.pontoA.y] != 1) &&
-                (pt.pontoB.x + 1 < LINHA && board[pt.pontoB.x + 1][pt.pontoB.y] != 1) &&
-                (pt.pontoC.x + 1 < LINHA && board[pt.pontoC.x + 1][pt.pontoC.y] != 1) &&
-                (pt.pontoD.x + 1 < LINHA && board[pt.pontoD.x + 1][pt.pontoD.y] != 1)
+        return (pt.pontoA.x + 1  < LINHA && vm.board[pt.pontoA.x + 1][pt.pontoA.y] != 1) &&
+                (pt.pontoB.x + 1 < LINHA && vm.board[pt.pontoB.x + 1][pt.pontoB.y] != 1) &&
+                (pt.pontoC.x + 1 < LINHA && vm.board[pt.pontoC.x + 1][pt.pontoC.y] != 1) &&
+                (pt.pontoD.x + 1 < LINHA && vm.board[pt.pontoD.x + 1][pt.pontoD.y] != 1)
     }
 
     //função que verfica se a peça passou da parede lado direito
 
     fun verificarParadaDireita(): Boolean{
-        return ((pt.pontoA.y + 1 < COLUNA && board[pt.pontoA.x][pt.pontoA.y + 1] != 1) &&
-                (pt.pontoB.y + 1 < COLUNA && board[pt.pontoB.x][pt.pontoB.y + 1] != 1) &&
-                (pt.pontoC.y + 1 < COLUNA && board[pt.pontoC.x][pt.pontoC.y + 1] != 1) &&
-                (pt.pontoD.y + 1 < COLUNA && board[pt.pontoD.x][pt.pontoD.y + 1] != 1))
+        return ((pt.pontoA.y + 1 < COLUNA && vm.board[pt.pontoA.x][pt.pontoA.y + 1] != 1) &&
+                (pt.pontoB.y + 1 < COLUNA && vm.board[pt.pontoB.x][pt.pontoB.y + 1] != 1) &&
+                (pt.pontoC.y + 1 < COLUNA && vm.board[pt.pontoC.x][pt.pontoC.y + 1] != 1) &&
+                (pt.pontoD.y + 1 < COLUNA && vm.board[pt.pontoD.x][pt.pontoD.y + 1] != 1))
     }
 
 
     //função que verfica se a peça passou da parede lado esquerdo
     fun verificarParadaEsquerda(): Boolean{
 
-        return ((pt.pontoA.y - 1 >=  0  && board[pt.pontoA.x][pt.pontoA.y - 1] < 1) &&
-                (pt.pontoB.y - 1 >=  0  && board[pt.pontoB.x][pt.pontoB.y - 1] < 1) &&
-                (pt.pontoC.y - 1 >=  0  && board[pt.pontoC.x][pt.pontoC.y - 1] < 1) &&
-                (pt.pontoD.y - 1 >=  0  && board[pt.pontoD.x][pt.pontoD.y - 1] < 1))
+        return ((pt.pontoA.y - 1 >=  0  && vm.board[pt.pontoA.x][pt.pontoA.y - 1] < 1) &&
+                (pt.pontoB.y - 1 >=  0  && vm.board[pt.pontoB.x][pt.pontoB.y - 1] < 1) &&
+                (pt.pontoC.y - 1 >=  0  && vm.board[pt.pontoC.x][pt.pontoC.y - 1] < 1) &&
+                (pt.pontoD.y - 1 >=  0  && vm.board[pt.pontoD.x][pt.pontoD.y - 1] < 1))
     }
 
     fun moverParaBaixo(){
@@ -157,10 +163,10 @@ class MainActivity : AppCompatActivity() {
         }else {
             speed = valorpadrao
             // preenche a board onde a peça parou com 1, para que seja mantido sua posição e visualização com vir a outra peça
-            board[pt.pontoA.x][pt.pontoA.y] = 1
-            board[pt.pontoB.x][pt.pontoB.y] = 1
-            board[pt.pontoC.x][pt.pontoC.y] = 1
-            board[pt.pontoD.x][pt.pontoD.y] = 1
+            vm.board[pt.pontoA.x][pt.pontoA.y] = 1
+            vm.board[pt.pontoB.x][pt.pontoB.y] = 1
+            vm.board[pt.pontoC.x][pt.pontoC.y] = 1
+            vm.board[pt.pontoD.x][pt.pontoD.y] = 1
             pintarBord()
 
             if(running) {gameOver()}
@@ -173,7 +179,7 @@ class MainActivity : AppCompatActivity() {
     fun gameOver(){
 
         for (i in 0 until COLUNA) {
-            if (board[4][i] == 1) {
+            if (vm.board[4][i] == 1) {
                 running = false
                 var x = Intent(this, TelaResultado::class.java)
                 var b = Bundle()
@@ -228,10 +234,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun destroi(linha:Int){
-        board[linha] = Array(COLUNA){0}
+        vm.board[linha] = Array(COLUNA){0}
         for ( i in linha downTo 1){
             Log.i("Entrou","Nessa parte ele deveria descer")
-            board[i] = board[i - 1]
+            vm.board[i] = vm.board[i - 1]
         }
     }
 
@@ -241,7 +247,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 0 until LINHA) {
             var contador = 0
             for (x in 0 until COLUNA) {
-                if (board[i][x] == 1) {
+                if (vm.board[i][x] == 1) {
                     Log.i("Entrou","Nessa parte ele ver se tem 1 o cont ta em $contador")
                     contador += 1
                     if (contador == 26) {
